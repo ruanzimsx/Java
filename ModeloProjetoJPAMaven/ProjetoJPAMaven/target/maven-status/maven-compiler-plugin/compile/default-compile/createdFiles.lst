@@ -1,0 +1,10 @@
+com/ifrr/projetojpamaven/conta/dao/ContaDao.class
+com/ifrr/projetojpamaven/ProjetoJPAMaven.class
+com/ifrr/projetojpamaven/conta/teste/TesteAlterar.class
+com/ifrr/projetojpamaven/util/JpaUtil.class
+util/DaoException.class
+com/ifrr/projetojpamaven/conta/teste/TesteSelecionar.class
+com/ifrr/projetojpamaven/conta/teste/TesteExcluir.class
+com/ifrr/projetojpamaven/conta/teste/TesteListar.class
+com/ifrr/projetojpamaven/conta/bean/ContaBean.class
+com/ifrr/projetojpamaven/conta/teste/TesteInserir.class
