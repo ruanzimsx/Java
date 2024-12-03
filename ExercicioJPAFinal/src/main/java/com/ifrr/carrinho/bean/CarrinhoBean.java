@@ -1,7 +1,10 @@
 package com.ifrr.carrinho.bean;
+
+import java.time.LocalDateTime;
+
 public class CarrinhoBean {
     private Long id;
     //Trocar para LocalDateTime
-    private String date;
+    private LocalDateTime date;
     private String status;
 }
