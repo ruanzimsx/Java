@@ -1,0 +1,176 @@
+Implementar do estudo de caso abaixo, seguindo como modelo o projeto
+apresentado em sala de aula, em anexo na atividade.
+
+
+
+
+
+
+Classes e
+Relacionamentos:
+
+
+
+
+
+
+Classe Cliente:
+
+Atributos:
+
+Codigo
+
+Nome
+
+Email
+
+Telefone
+
+Relacionamentos:One-to-One
+com Carrinho
+
+
+
+
+
+
+Classe Carrinho:
+
+Atributos:
+
+Codigo
+
+dataCriacao
+
+Status
+
+Relacionamentos:One-to-One
+com Cliente
+
+One-to-Many com
+ItemCarrinho
+
+
+
+
+
+
+Classe
+ItemCarrinho:
+
+Atributos:
+
+Codigo
+
+Quantidade
+
+precoUnitario
+
+Relacionamentos:Many-to-One
+com Carrinho
+
+Many-to-One com
+Produto
+
+
+
+
+
+
+Classe Produto:
+
+Atributos:
+
+Codigo
+
+Nome
+
+Descricao
+
+Preco
+
+Relacionamentos:Many-to-Many
+com Pedido
+
+
+
+
+
+
+Classe Pedido
+
+Atributos:
+
+Codigo
+
+dataPedido
+
+Status
+
+valorTotal
+
+Relacionamentos:One-to-Many
+com ItemPedido
+
+
+Many-to-One com
+Cliente
+
+
+
+
+
+Classe
+ItemPedido:
+
+Atributos:
+
+Codigo
+
+Quantidade
+
+precoUnitario
+
+Relacionamentos:Many-to-One
+com Pedido
+
+Many-to-One com
+Produto
+
+
+
+
+
+
+Classe Categoria
+
+Atributos:
+
+Codigo
+
+Nome
+
+Descricao
+
+Relacionamentos:One-to-Many
+com Produto
+
+
+
+
+**PEndente
+
+Classe Pessoa
+
+Atributos:
+
+Codigo
+
+Nome
+
+CPF
+
+dataNascimento
+
+Relacionamentos:Herança
+com Cliente
