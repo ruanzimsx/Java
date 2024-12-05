@@ -6,9 +6,7 @@ import com.ruan.itemPedido.bean.ItemPedidoBean;
 import com.ruan.pedido.bean.PedidoBean;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "produto")
@@ -23,13 +21,13 @@ public class ProdutoBean {
     @Column(name = "preco")
     private Float value;
     @ManyToMany(mappedBy = "produtoBeanList", fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private List<PedidoBean> pedidoBeanList = new ArrayList<>();
+    private Set<PedidoBean> pedidoBeanList = new HashSet<>();
 
     @OneToMany(mappedBy = "produtoBean", fetch = FetchType.EAGER)
-    private List<ItemCarrinhoBean> itemCarrinhoBeanList;
+    private Set<ItemCarrinhoBean> itemCarrinhoBeanList;
 
     @OneToMany(mappedBy = "produtoBean", fetch = FetchType.EAGER)
-    private List<ItemPedidoBean> itemPedidoBeanList;
+    private Set<ItemPedidoBean> itemPedidoBeanList;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
@@ -73,27 +71,27 @@ public class ProdutoBean {
         this.value = value;
     }
 
-    public List<PedidoBean> getPedidoBeanList() {
+    public Set<PedidoBean> getPedidoBeanList() {
         return pedidoBeanList;
     }
 
-    public void setPedidoBeanList(List<PedidoBean> pedidoBeanList) {
+    public void setPedidoBeanList(Set<PedidoBean> pedidoBeanList) {
         this.pedidoBeanList = pedidoBeanList;
     }
 
-    public List<ItemCarrinhoBean> getItemCarrinhoBeanList() {
+    public Set<ItemCarrinhoBean> getItemCarrinhoBeanList() {
         return itemCarrinhoBeanList;
     }
 
-    public void setItemCarrinhoBeanList(List<ItemCarrinhoBean> itemCarrinhoBeanList) {
+    public void setItemCarrinhoBeanList(Set<ItemCarrinhoBean> itemCarrinhoBeanList) {
         this.itemCarrinhoBeanList = itemCarrinhoBeanList;
     }
 
-    public List<ItemPedidoBean> getItemPedidoBeanList() {
+    public Set<ItemPedidoBean> getItemPedidoBeanList() {
         return itemPedidoBeanList;
     }
 
-    public void setItemPedidoBeanList(List<ItemPedidoBean> itemPedidoBeanList) {
+    public void setItemPedidoBeanList(Set<ItemPedidoBean> itemPedidoBeanList) {
         this.itemPedidoBeanList = itemPedidoBeanList;
     }
 

@@ -7,7 +7,9 @@ import com.ruan.produto.bean.ProdutoBean;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "pedido")
@@ -27,9 +29,9 @@ public class PedidoBean {
             joinColumns = @JoinColumn(name = "id_pedido"),
             inverseJoinColumns = @JoinColumn(name = "id_produto")
     )
-    private List<ProdutoBean> produtoBeanList = new ArrayList<>();
+    private Set<ProdutoBean> produtoBeanList = new HashSet<>();
     @OneToMany(mappedBy = "pedidoBean",fetch = FetchType.EAGER)
-    private List<ItemPedidoBean> itemPedidoBeanList;
+    private Set<ItemPedidoBean> itemPedidoBeanList;
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private ClienteBean clienteBean;

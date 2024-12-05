@@ -4,6 +4,7 @@ import com.ruan.produto.bean.ProdutoBean;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.Objects;
 
 @Entity
@@ -18,13 +19,45 @@ public class CategoriaBean {
     private String description;
 
     @OneToMany(mappedBy = "categoriaBean",fetch = FetchType.EAGER)
-    private List<ProdutoBean> produtoBeanList;
+    private Set<ProdutoBean> produtoBeanList;
 
     public CategoriaBean() {
     }
 
     public CategoriaBean(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<ProdutoBean> getProdutoBeanList() {
+        return produtoBeanList;
+    }
+
+    public void setProdutoBeanList(Set<ProdutoBean> produtoBeanList) {
+        this.produtoBeanList = produtoBeanList;
     }
 
     @Override

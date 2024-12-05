@@ -1,6 +1,7 @@
-package com.ruan.produto.dao;
+package com.ruan.cliente.dao;
 
-import com.ruan.produto.bean.ProdutoBean;
+import com.ruan.categoria.bean.CategoriaBean;
+import com.ruan.cliente.bean.ClienteBean;
 import com.ruan.util.DaoException;
 import com.ruan.util.JpaUtil;
 
@@ -8,80 +9,75 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.Collection;
-import java.util.List;
 
-public class ProdutoDao {
-
-    public ProdutoBean save(ProdutoBean produtoBean) throws DaoException {
+public class ClienteDao {
+    public ClienteBean save(ClienteBean clienteBean) throws DaoException {
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            entityManager.persist(produtoBean);
+            entityManager.persist(clienteBean);
             transaction.commit();
-        } catch (Exception exception) {
+        } catch (Exception e) {
             if (transaction.isActive()) transaction.rollback();
-            System.err.println("Erro ao inserir produto: " + exception.getMessage());
-            throw new DaoException("Erro ao inserir Produto", exception);
+            System.err.println("Erro em inserir cliente: " + e.getMessage());
+            throw new DaoException("Erro inserir cliente", e);
         } finally {
             JpaUtil.closeEntityManager(entityManager);
         }
-        return produtoBean;
+        return clienteBean;
     }
 
-    public ProdutoBean replace(ProdutoBean produtoBean) throws DaoException {
+    public ClienteBean replace(ClienteBean clienteBean) throws DaoException {
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            produtoBean = entityManager.merge(produtoBean);
+            entityManager.merge(clienteBean);
             transaction.commit();
-        } catch (Exception exception) {
+        } catch (Exception e) {
             if (transaction.isActive()) transaction.rollback();
-            System.err.println("Erro ao alterar produto: " + exception.getMessage());
-            throw new DaoException("Erro ao alterar Produto", exception);
+            System.err.println("Erro em alterar cliente: " + e.getMessage());
+            throw new DaoException("Erro alterar cliente", e);
         } finally {
             JpaUtil.closeEntityManager(entityManager);
         }
-        return produtoBean;
+        return clienteBean;
     }
-
-    public ProdutoBean findById(Long id) {
+    public ClienteBean findById(Long id) throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
-        try {
-            return entityManager.find(ProdutoBean.class, id);
-        } finally {
+        try{
+            return entityManager.find(ClienteBean.class, id);
+        }finally {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-
-    public Collection<ProdutoBean> findAll() {
+    public Collection<ClienteBean> findAll(){
         EntityManager entityManager = JpaUtil.getEntityManager();
-        try {
-            Query fromProduto = entityManager.createQuery("from ProdutoBean");
-            return fromProduto.getResultList();
-        } finally {
+        try{
+            Query fromClienteBean = entityManager.createQuery("from ClienteBean");
+            return fromClienteBean.getResultList();
+        }finally {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-
-    public boolean removeById(Long id) throws DaoException {
+    public boolean removeById(Long id) throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            ProdutoBean produtoBean = entityManager.find(ProdutoBean.class, id);
-            if (produtoBean != null) {
-                entityManager.remove(produtoBean);
+            ClienteBean clienteBean = entityManager.find(ClienteBean.class, id);
+            if (clienteBean != null) {
+                entityManager.remove(clienteBean);
                 transaction.commit();
                 return true;
             } else {
-                System.err.println("codigo produto " + id + "nao encontrado!");
+                System.err.println("codigo cliente " + id + "nao encontrado!");
                 return false;
             }
         } catch (Exception e) {
-            System.err.println("Erro ao excluir produto: " + e.getMessage());
-            throw new DaoException("Erro ao excluir produto", e);
+            System.err.println("Erro ao excluir cliente: " + e.getMessage());
+            throw new DaoException("Erro ao excluir cliente", e);
         } finally {
             JpaUtil.closeEntityManager(entityManager);
         }

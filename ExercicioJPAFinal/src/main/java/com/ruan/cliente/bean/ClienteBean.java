@@ -5,6 +5,7 @@ import com.ruan.pedido.bean.PedidoBean;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.Objects;
 
 @Entity
@@ -24,7 +25,7 @@ public class ClienteBean {
     @JoinColumn(name = "id_carrinho")
     private CarrinhoBean carrinhoBean;
     @OneToMany(mappedBy = "clienteBean", fetch = FetchType.EAGER)
-    private List<PedidoBean> pedidoBeanList;
+    private Set<PedidoBean> pedidoBeanList;
 
     public ClienteBean() {
 

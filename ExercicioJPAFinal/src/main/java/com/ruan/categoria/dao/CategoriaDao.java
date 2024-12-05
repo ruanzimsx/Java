@@ -1,5 +1,6 @@
-package com.ruan.produto.dao;
+package com.ruan.categoria.dao;
 
+import com.ruan.categoria.bean.CategoriaBean;
 import com.ruan.produto.bean.ProdutoBean;
 import com.ruan.util.DaoException;
 import com.ruan.util.JpaUtil;
@@ -8,80 +9,75 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.Collection;
-import java.util.List;
 
-public class ProdutoDao {
-
-    public ProdutoBean save(ProdutoBean produtoBean) throws DaoException {
+public class CategoriaDao {
+    public CategoriaBean save(CategoriaBean categoriaBean) throws DaoException {
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            entityManager.persist(produtoBean);
+            entityManager.persist(categoriaBean);
             transaction.commit();
-        } catch (Exception exception) {
+        } catch (Exception e) {
             if (transaction.isActive()) transaction.rollback();
-            System.err.println("Erro ao inserir produto: " + exception.getMessage());
-            throw new DaoException("Erro ao inserir Produto", exception);
+            System.err.println("Erro em inserir categoria: " + e.getMessage());
+            throw new DaoException("Erro inserir categoria", e);
         } finally {
             JpaUtil.closeEntityManager(entityManager);
         }
-        return produtoBean;
+        return categoriaBean;
     }
 
-    public ProdutoBean replace(ProdutoBean produtoBean) throws DaoException {
+    public CategoriaBean replace(CategoriaBean categoriaBean) throws DaoException {
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            produtoBean = entityManager.merge(produtoBean);
+            entityManager.merge(categoriaBean);
             transaction.commit();
-        } catch (Exception exception) {
+        } catch (Exception e) {
             if (transaction.isActive()) transaction.rollback();
-            System.err.println("Erro ao alterar produto: " + exception.getMessage());
-            throw new DaoException("Erro ao alterar Produto", exception);
+            System.err.println("Erro em alterar categoria: " + e.getMessage());
+            throw new DaoException("Erro alterar categoria", e);
         } finally {
             JpaUtil.closeEntityManager(entityManager);
         }
-        return produtoBean;
+        return categoriaBean;
     }
-
-    public ProdutoBean findById(Long id) {
+    public CategoriaBean findById(Long id) throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
-        try {
-            return entityManager.find(ProdutoBean.class, id);
-        } finally {
+        try{
+            return entityManager.find(CategoriaBean.class, id);
+        }finally {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-
-    public Collection<ProdutoBean> findAll() {
+    public Collection<CategoriaBean> findAll(){
         EntityManager entityManager = JpaUtil.getEntityManager();
-        try {
-            Query fromProduto = entityManager.createQuery("from ProdutoBean");
-            return fromProduto.getResultList();
-        } finally {
+        try{
+            Query fromCategoriaBean = entityManager.createQuery("from CategoriaBean");
+            return fromCategoriaBean.getResultList();
+        }finally {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-
-    public boolean removeById(Long id) throws DaoException {
+    public boolean removeById(Long id) throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            ProdutoBean produtoBean = entityManager.find(ProdutoBean.class, id);
-            if (produtoBean != null) {
-                entityManager.remove(produtoBean);
+            CategoriaBean categoriaBean = entityManager.find(CategoriaBean.class, id);
+            if (categoriaBean != null) {
+                entityManager.remove(categoriaBean);
                 transaction.commit();
                 return true;
             } else {
-                System.err.println("codigo produto " + id + "nao encontrado!");
+                System.err.println("codigo categoria " + id + "nao encontrado!");
                 return false;
             }
         } catch (Exception e) {
-            System.err.println("Erro ao excluir produto: " + e.getMessage());
-            throw new DaoException("Erro ao excluir produto", e);
+            System.err.println("Erro ao excluir categoria: " + e.getMessage());
+            throw new DaoException("Erro ao excluir categoria", e);
         } finally {
             JpaUtil.closeEntityManager(entityManager);
         }

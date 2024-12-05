@@ -6,6 +6,7 @@ import com.ruan.itemCarrinho.bean.ItemCarrinhoBean;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.Objects;
 
 @Entity
@@ -20,9 +21,8 @@ public class CarrinhoBean {
     private String status;
     @OneToOne(mappedBy = "carrinhoBean")
     private ClienteBean clienteBean;
-    @OneToMany(mappedBy = "carrinhoBean", fetch = FetchType.EAGER
-            , cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<ItemCarrinhoBean> itemCarrinhoBeanList;
+    @OneToMany(mappedBy = "carrinhoBean", fetch = FetchType.EAGER)
+    private Set<ItemCarrinhoBean> itemCarrinhoBeanList;
 
     public CarrinhoBean() {
     }
@@ -74,11 +74,11 @@ public class CarrinhoBean {
         this.clienteBean = clienteBean;
     }
 
-    public List<ItemCarrinhoBean> getItemCarrinhoBeanList() {
+    public Set<ItemCarrinhoBean> getItemCarrinhoBeanList() {
         return itemCarrinhoBeanList;
     }
 
-    public void setItemCarrinhoBeanList(List<ItemCarrinhoBean> itemCarrinhoBeanList) {
+    public void setItemCarrinhoBeanList(Set<ItemCarrinhoBean> itemCarrinhoBeanList) {
         this.itemCarrinhoBeanList = itemCarrinhoBeanList;
     }
 
