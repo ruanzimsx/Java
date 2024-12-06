@@ -6,11 +6,12 @@ import com.ruan.itemPedido.bean.ItemPedidoBean;
 import com.ruan.pedido.bean.PedidoBean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "produto")
-public class ProdutoBean {
+public class ProdutoBean implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,6 +46,20 @@ public class ProdutoBean {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "ProdutoBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", value=" + value +
+                ", pedidoBeanList=" + pedidoBeanList +
+                ", itemCarrinhoBeanList=" + itemCarrinhoBeanList +
+                ", itemPedidoBeanList=" + itemPedidoBeanList +
+                ", categoriaBean=" + categoriaBean +
+                '}';
     }
 
     public String getName() {

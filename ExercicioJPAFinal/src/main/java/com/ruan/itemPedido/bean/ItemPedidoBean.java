@@ -30,6 +30,57 @@ public class ItemPedidoBean {
     }
 
     @Override
+    public String toString() {
+        return "ItemPedidoBean{" +
+                "id=" + id +
+                ", quant=" + quant +
+                ", precoUnitario=" + precoUnitario +
+                ", pedidoBean=" + pedidoBean +
+                ", produtoBean=" + produtoBean +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getQuant() {
+        return quant;
+    }
+
+    public void setQuant(Integer quant) {
+        this.quant = quant;
+    }
+
+    public Float getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(Float precoUnitario) {
+        this.precoUnitario = precoUnitario;
+    }
+
+    public PedidoBean getPedidoBean() {
+        return pedidoBean;
+    }
+
+    public void setPedidoBean(PedidoBean pedidoBean) {
+        this.pedidoBean = pedidoBean;
+    }
+
+    public ProdutoBean getProdutoBean() {
+        return produtoBean;
+    }
+
+    public void setProdutoBean(ProdutoBean produtoBean) {
+        this.produtoBean = produtoBean;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

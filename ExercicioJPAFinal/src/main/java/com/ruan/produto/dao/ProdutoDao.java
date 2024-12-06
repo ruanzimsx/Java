@@ -46,7 +46,7 @@ public class ProdutoDao {
         return produtoBean;
     }
 
-    public ProdutoBean findById(Long id) {
+    public ProdutoBean findById(Long id) throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try {
             return entityManager.find(ProdutoBean.class, id);
@@ -55,7 +55,7 @@ public class ProdutoDao {
         }
     }
 
-    public Collection<ProdutoBean> findAll() {
+    public Collection<ProdutoBean> findAll() throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try {
             Query fromProduto = entityManager.createQuery("from ProdutoBean");

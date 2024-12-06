@@ -52,7 +52,7 @@ public class ClienteDao {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-    public Collection<ClienteBean> findAll(){
+    public Collection<ClienteBean> findAll() throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try{
             Query fromClienteBean = entityManager.createQuery("from ClienteBean");

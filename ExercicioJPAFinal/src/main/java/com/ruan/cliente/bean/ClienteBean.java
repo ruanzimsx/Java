@@ -2,6 +2,7 @@ package com.ruan.cliente.bean;
 
 import com.ruan.carrinho.bean.CarrinhoBean;
 import com.ruan.pedido.bean.PedidoBean;
+import com.ruan.pessoa.bean.PessoaBean;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "cliente")
-public class ClienteBean {
+@DiscriminatorValue("Cliente")
+public class ClienteBean extends PessoaBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
@@ -27,14 +29,6 @@ public class ClienteBean {
     @OneToMany(mappedBy = "clienteBean", fetch = FetchType.EAGER)
     private Set<PedidoBean> pedidoBeanList;
 
-    public ClienteBean() {
-
-    }
-
-    public ClienteBean(Long id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
         return "ClienteBean{" +
@@ -43,6 +37,7 @@ public class ClienteBean {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", carrinhoBean=" + carrinhoBean +
+                ", pedidoBeanList=" + pedidoBeanList +
                 '}';
     }
 
@@ -84,6 +79,14 @@ public class ClienteBean {
 
     public void setCarrinhoBean(CarrinhoBean carrinhoBean) {
         this.carrinhoBean = carrinhoBean;
+    }
+
+    public Set<PedidoBean> getPedidoBeanList() {
+        return pedidoBeanList;
+    }
+
+    public void setPedidoBeanList(Set<PedidoBean> pedidoBeanList) {
+        this.pedidoBeanList = pedidoBeanList;
     }
 
     @Override

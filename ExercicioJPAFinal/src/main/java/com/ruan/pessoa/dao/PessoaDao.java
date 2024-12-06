@@ -54,7 +54,7 @@ public class PessoaDao {
         }
     }
 
-    public Collection<PessoaBean> findAll() {
+    public Collection<PessoaBean> findAll() throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try {
             Query fromPessoaBean = entityManager.createQuery("from PessoaBean");

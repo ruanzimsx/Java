@@ -6,10 +6,7 @@ import com.ruan.produto.bean.ProdutoBean;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "pedido")
@@ -40,5 +37,87 @@ public class PedidoBean {
 
     public PedidoBean(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "PedidoBean{" +
+                "id=" + id +
+                ", dataPedido=" + dataPedido +
+                ", status='" + status + '\'' +
+                ", valorTotal=" + valorTotal +
+                ", produtoBeanList=" + produtoBeanList +
+                ", itemPedidoBeanList=" + itemPedidoBeanList +
+                ", clienteBean=" + clienteBean +
+                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(LocalDateTime dataPedido) {
+        this.dataPedido = dataPedido;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Set<ProdutoBean> getProdutoBeanList() {
+        return produtoBeanList;
+    }
+
+    public void setProdutoBeanList(Set<ProdutoBean> produtoBeanList) {
+        this.produtoBeanList = produtoBeanList;
+    }
+
+    public Set<ItemPedidoBean> getItemPedidoBeanList() {
+        return itemPedidoBeanList;
+    }
+
+    public void setItemPedidoBeanList(Set<ItemPedidoBean> itemPedidoBeanList) {
+        this.itemPedidoBeanList = itemPedidoBeanList;
+    }
+
+    public ClienteBean getClienteBean() {
+        return clienteBean;
+    }
+
+    public void setClienteBean(ClienteBean clienteBean) {
+        this.clienteBean = clienteBean;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PedidoBean that = (PedidoBean) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

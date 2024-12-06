@@ -52,7 +52,7 @@ public class ItemPedidoDao {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-    public Collection<ItemPedidoBean> findAll(){
+    public Collection<ItemPedidoBean> findAll() throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try{
             Query fromItemPedidoBean = entityManager.createQuery("from ItemPedidoBean");

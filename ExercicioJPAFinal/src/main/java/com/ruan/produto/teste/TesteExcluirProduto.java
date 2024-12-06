@@ -7,17 +7,17 @@ import com.ruan.util.DaoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TesteAlterarProduto {
+public class TesteExcluirProduto {
     public static void main(String[] args) {
-        ProdutoBean produto = new ProdutoBean();
-        produto.setId(1L);
-        produto.setName("Ruan");
         ProdutoDao produtoDao = new ProdutoDao();
         try{
-            System.out.println(produtoDao.replace(produto));
-            System.out.println("Alterado com sucesso!");
+            if(produtoDao.removeById(1L)){
+                System.out.println("Removido com sucesso!");
+            }else{
+                System.out.println("Erro ao remover!");
+            }
         } catch (DaoException e) {
-            Logger.getLogger(TesteAlterarProduto.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            Logger.getLogger(TesteExcluirProduto.class.getName()).log(Level.SEVERE, e.getMessage(), e);
         }
     }
 }

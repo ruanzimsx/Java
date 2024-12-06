@@ -16,7 +16,7 @@ public class TesteInserirCategoria {
         try{
             categoriaDao.save(categoriaBean);
         } catch (DaoException e) {
-            Logger.getLogger(TesteInserirCategoria.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(TesteInserirCategoria.class.getName()).log(Level.SEVERE, "erro ao inserir categoria", e);
         }
     }
 }

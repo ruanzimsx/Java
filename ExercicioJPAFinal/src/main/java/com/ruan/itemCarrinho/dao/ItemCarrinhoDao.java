@@ -51,7 +51,7 @@ public class ItemCarrinhoDao {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-    public Collection<ItemCarrinhoBean> findAll(){
+    public Collection<ItemCarrinhoBean> findAll() throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try{
             Query fromItemCarrinhoBean = entityManager.createQuery("from ItemCarrinhoBean");
