@@ -52,7 +52,7 @@ public class CarrinhoDao {
             JpaUtil.closeEntityManager(entityManager);
         }
     }
-    public Collection<CarrinhoBean> findAll(){
+    public Collection<CarrinhoBean> findAll() throws DaoException{
         EntityManager entityManager = JpaUtil.getEntityManager();
         try{
             Query fromCarrinhoBean = entityManager.createQuery("from CarrinhoBean");

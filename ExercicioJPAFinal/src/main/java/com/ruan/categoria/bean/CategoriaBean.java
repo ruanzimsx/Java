@@ -28,6 +28,16 @@ public class CategoriaBean {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "CategoriaBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", produtoBeanList=" + produtoBeanList +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
